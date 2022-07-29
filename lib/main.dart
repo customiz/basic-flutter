@@ -15,7 +15,7 @@ class Myapp extends StatelessWidget {
     return MaterialApp(
       title: 'Test App',
       home: MyHomePage(),
-      theme: ThemeData(primarySwatch: Colors.pink),
+      theme: ThemeData(primarySwatch: Colors.green),
     );
   }
 }
@@ -34,38 +34,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('โปรแกรมนับเลข'),
-      ),
-      body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        // ignore: prefer_const_literals_to_create_immutables
-        children: [
-          Text(
-            "กดปุ่มเพื่อเพิ่มจำนวนตัวเลข",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-              color: Colors.pink,
-            ),
-          ),
-          Text(
-            number.toString(),
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 60),
-          ),
-        ],
-      )),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            number++;
-          });
-        },
-        child: Icon(Icons.add),
-      ),
-    );
+        appBar: AppBar(
+          title: Text('เลือกเมนู'),
+        ),
+        body: ListView.builder(
+            itemCount: 50,
+            itemBuilder: (BuildContext context, int index) {
+              return ListTile(title: Text("เมนูที่ ${index + 1}"));
+            }));
   }
 }
