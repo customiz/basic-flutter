@@ -14,26 +14,58 @@ class Myapp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Test App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Test APP อิอิ'),
-        ),
-        body: Center(
-            child: Column(
-          // ignore: prefer_const_literals_to_create_immutables
-          children: [
-            Text(
-              "ทดสอบๆๆๆๆ",
-              style: TextStyle(fontSize: 50, color: Colors.red),
-            ),
-            Text("HI HELLO TEST"),
-            Image(
-                image: NetworkImage(
-                    'https://farmhip.com/media/illustration/work-01.png'))
-          ],
-        )),
+      home: MyHomePage(),
+      theme: ThemeData(primarySwatch: Colors.pink),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  // ignore: prefer_const_constructors_in_immutables
+  MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int number = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('โปรแกรมนับเลข'),
       ),
-      theme: ThemeData(primarySwatch: Colors.red),
+      body: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        // ignore: prefer_const_literals_to_create_immutables
+        children: [
+          Text(
+            "กดปุ่มเพื่อเพิ่มจำนวนตัวเลข",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+              color: Colors.pink,
+            ),
+          ),
+          Text(
+            number.toString(),
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 60),
+          ),
+        ],
+      )),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            number++;
+          });
+        },
+        child: Icon(Icons.add),
+      ),
     );
   }
 }
