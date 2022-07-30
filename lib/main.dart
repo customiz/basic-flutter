@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'FoodMenu.dart';
 
 void main() {
   var app = Myapp();
@@ -29,7 +30,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int number = 0;
+  List<FoodMenu> menu = [
+    FoodMenu("กระเพรา", "50", "assets/images/1.jpg"),
+    FoodMenu("คะน้า", "55", "assets/images/2.jpg"),
+    FoodMenu("ส้มตำ", "45", "assets/images/3.jpg"),
+    FoodMenu("ผัดไทย", "50", "assets/images/4.jpg")
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +44,18 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text('เลือกเมนู'),
         ),
         body: ListView.builder(
-            itemCount: 50,
+            itemCount: menu.length,
             itemBuilder: (BuildContext context, int index) {
-              return ListTile(title: Text("เมนูที่ ${index + 1}"));
+              FoodMenu food = menu[index];
+              return ListTile(
+                leading: Image.asset(food.img),
+                title: Text(food.name),
+                // ignore: prefer_interpolation_to_compose_strings
+                subtitle: Text("ราคา " + food.price + " บาท"),
+                onTap: () {
+                  print("เลือกเมนูชื่อ " + food.name);
+                },
+              );
             }));
   }
 }
