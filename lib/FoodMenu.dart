@@ -1,3 +1,4 @@
+// ignore: file_names
 class FoodMenu {
   String name;
   String price;
